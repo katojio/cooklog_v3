@@ -21,7 +21,6 @@ RSpec.describe "ログイン", type: :request do
     expect(is_logged_in?).not_to be_truthy
     redirect_to root_url
     delete logout_path
-    follow_redirect!
   end
 
   it "無効なユーザーでログイン" do
@@ -29,5 +28,25 @@ RSpec.describe "ログイン", type: :request do
     post login_path, params: { session: { email: "xxx@example.com",
                                           password: user.password } }
     expect(is_logged_in?).not_to be_truthy
+  end
+
+  it "「ログインしたままにする」にチェックしてログイン" do
+    post login_path, params: { session: { email: user.email,
+                                          password: user.password,
+                                          remember_me: '1' } }
+    expect(response.cookies['remember_token']).not_to eq nil
+  end
+
+  it "「ログインしたままにする」にチェックせずにログイン" do
+    # クッキーを保存してログイン
+    post login_path, params: { session: { email: user.email,
+                                          password: user.password,
+                                          remember_me: '1' } }
+    delete logout_path
+    # クッキーを保存せずにログイン
+    post login_path, params: { session: { email: user.email,
+                                          password: user.password,
+                                          remember_me: '0' } }
+    expect(response.cookies['remember_token']).to eq nil
   end
 end
