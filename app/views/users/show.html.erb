@@ -1,19 +1,20 @@
 <% provide(:title, "プロフィール") %>
 <div class="container">
-  <h1>プロフィール</h1>
+  <h3 class="title-profile">プロフィール</h3>
   <div class="row">
-    <aside class="col-md-2">
+    <div class="col-md-4">
       <div class="user-picture-box">
-        <%= gravatar_for @user, size: 100 %>
+        <%= gravatar_for @user, size: 120, cl: "gravatar user-picture" %>
       </div>
-    </aside>
-    <div class="col-md-6">
-      <section class="user_name_info">
-        <%= @user.name %>
-      </section>
-      <%= link_to "プロフィール編集", edit_user_path(@user) %>
-      <%= @user.introduction %>
-      <%= @user.sex %>
+    </div>
+    <div class="col-md-8">
+      <h4 class="show-user-name"><%= @user.name %></h4>　<%= @user.sex %>
+      <div>
+        <%= @user.introduction %>
+      </div>
+      <% if current_user == @user %>
+        <div class="account-edit"><%= link_to "プロフィール編集", edit_user_path(@user) %></div>
+      <% end %>
     </div>
   </div>
 </div>
