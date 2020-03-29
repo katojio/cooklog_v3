@@ -47,3 +47,6 @@ Lint/AssignmentInCondition:
 
 Style/MultilineTernaryOperator:
   Enabled: false
+
+Airbnb/DefaultScope:
+  Enabled: false
