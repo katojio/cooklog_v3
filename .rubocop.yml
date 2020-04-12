@@ -54,3 +54,12 @@ Airbnb/DefaultScope:
 Lint/UselessAssignment:
   Exclude:
     - 'app/uploaders/*'
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Layout/FirstArrayElementLineBreak:
+  Enabled: false
+
+Airbnb/RiskyActiverecordInvocation:
+  Enabled: false
