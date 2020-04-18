@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :list do
-    user_id 1
-    dish_id ""
+    from_user_id { 1 }
+    association :user
+    association :dish
   end
 end
