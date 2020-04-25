@@ -66,3 +66,6 @@ Airbnb/RiskyActiverecordInvocation:
 
 Layout/MultilineArrayBraceLayout:
   Enabled: false
+
+Airbnb/ContinuationSlash:
+  Enabled: false
